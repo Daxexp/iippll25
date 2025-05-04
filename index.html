@@ -1,61 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Stream</title>
-    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #ffffff;
-            transition: background-color 0.5s ease, color 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .channel-name {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .video-container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        #videoPlayer {
-            width: 100%;
-            height: 60vh; /* Adjust height to be responsive */
-        }
-        /* When in fullscreen, set video to cover the whole screen */
-        #videoPlayer:-webkit-full-screen,
-        #videoPlayer:-moz-full-screen,
-        #videoPlayer:fullscreen {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Stream</title>
+  <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #ffffff;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .channel-name {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .video-container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    #videoPlayer {
+      width: 100%;
+      height: 60vh; /* Adjust height to be responsive */
+    }
+    /* When in fullscreen, set video to cover the whole screen */
+    #videoPlayer:-webkit-full-screen,
+    #videoPlayer:-moz-full-screen,
+    #videoPlayer:fullscreen {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
-    <div class="channel-name" id="channelName">IPL Live Stream</div>
-    <div class="video-container">
-        <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" var _0x108160=_0x1e19;function _0x1e19(_0x4f6123,_0x5de969){var _0x36db22=_0x36db();return _0x1e19=function(_0x1e197f,_0x4a92b9){_0x1e197f=_0x1e197f-0xed;var _0x33f5c6=_0x36db22[_0x1e197f];return _0x33f5c6;},_0x1e19(_0x4f6123,_0x5de969);}(function(_0x1831a8,_0x593194){var _0x11d867=_0x1e19,_0x108bfd=_0x1831a8();while(!![]){try{var _0x47bb77=-parseInt(_0x11d867(0xf4))/0x1+-parseInt(_0x11d867(0xf0))/0x2*(parseInt(_0x11d867(0xf8))/0x3)+-parseInt(_0x11d867(0xee))/0x4+-parseInt(_0x11d867(0xf7))/0x5+-parseInt(_0x11d867(0xf6))/0x6*(parseInt(_0x11d867(0xf2))/0x7)+-parseInt(_0x11d867(0xf5))/0x8*(parseInt(_0x11d867(0xf1))/0x9)+parseInt(_0x11d867(0xef))/0xa*(parseInt(_0x11d867(0xf3))/0xb);if(_0x47bb77===_0x593194)break;else _0x108bfd['push'](_0x108bfd['shift']());}catch(_0x14ffd9){_0x108bfd['push'](_0x108bfd['shift']());}}}(_0x36db,0xeb013),poster=_0x108160(0xed));function _0x36db(){var _0x230ebc=['16890JgRwDZ','1815280LrZwTh','16169094yDNVYV','35xitaqw','51931OKxuAS','612035PEdDDF','8UibJxu','1949658FfRSLJ','4652125mhisON','6EHIPZd','https://upload.wikimedia.org/wikipedia/en/1/18/2025_IPL_logo.png','928676euuxto'];_0x36db=function(){return _0x230ebc;};return _0x36db();}>
-            <source id="streamSource" function _0x3203(){var _0x5a00af=['67152JYQeGC','8yOpdPQ','1442754HPEruH','1420964vmTjut','230kODBrZ','753521AyKToQ','4015611VflKBu','https://edge1-moblive.yuppcdn.net/trans1sd/smil:pragtv34.smil/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MDMvMTAvMjAyNCAxMToyNDozOCBBTSZoYXNoX3ZhbHVlPUpObWYrMVpjc3lVVmVBZThaeTZidVE9PSZ2YWxpZG1pbnV0ZXM9NSZpZD15dXBwdHZvdHRfNV8yMDE3NzBfYTA0NmIxNGUtYzBiNS1mOTAzLTgzZjUtZDE3YzY0MmE1YTFjX0xLXzE3NS4xNTcuMTM2LjkwX3NsdF8xX2NoYW5uZWxfMzRfLTEmc3RybV9sZW49Mjc=','2271024aZobyD','2713836VeApWS'];_0x3203=function(){return _0x5a00af;};return _0x3203();}function _0x3d0b(_0x556577,_0x5dd7af){var _0x320364=_0x3203();return _0x3d0b=function(_0x3d0b01,_0x297ca3){_0x3d0b01=_0x3d0b01-0x96;var _0x2f4609=_0x320364[_0x3d0b01];return _0x2f4609;},_0x3d0b(_0x556577,_0x5dd7af);}var _0x133f48=_0x3d0b;(function(_0x1e9d63,_0x22ef94){var _0x196c2c=_0x3d0b,_0x45ecc3=_0x1e9d63();while(!![]){try{var _0x121fd6=-parseInt(_0x196c2c(0x9e))/0x1+parseInt(_0x196c2c(0x9c))/0x2+-parseInt(_0x196c2c(0x9b))/0x3+parseInt(_0x196c2c(0x98))/0x4+-parseInt(_0x196c2c(0x9d))/0x5*(parseInt(_0x196c2c(0x99))/0x6)+parseInt(_0x196c2c(0x97))/0x7+-parseInt(_0x196c2c(0x9a))/0x8*(-parseInt(_0x196c2c(0x9f))/0x9);if(_0x121fd6===_0x22ef94)break;else _0x45ecc3['push'](_0x45ecc3['shift']());}catch(_0x5c5fb1){_0x45ecc3['push'](_0x45ecc3['shift']());}}}(_0x3203,0x642a9),src=_0x133f48(0x96)); type="application/x-mpegURL">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
-    <script>
-        var _0xb57c77=_0xc124;function _0xc124(_0x2f7dc0,_0x37a0c1){var _0x31a411=_0x31a4();return _0xc124=function(_0xc12439,_0x353e92){_0xc12439=_0xc12439-0xad;var _0x477f28=_0x31a411[_0xc12439];return _0x477f28;},_0xc124(_0x2f7dc0,_0x37a0c1);}(function(_0x30f0ae,_0x48bc50){var _0x387324=_0xc124,_0x17230e=_0x30f0ae();while(!![]){try{var _0xeb33c5=parseInt(_0x387324(0xb3))/0x1*(-parseInt(_0x387324(0xbc))/0x2)+parseInt(_0x387324(0xc2))/0x3*(-parseInt(_0x387324(0xb0))/0x4)+parseInt(_0x387324(0xbb))/0x5+parseInt(_0x387324(0xc3))/0x6*(parseInt(_0x387324(0xb8))/0x7)+-parseInt(_0x387324(0xb7))/0x8*(parseInt(_0x387324(0xb6))/0x9)+parseInt(_0x387324(0xb5))/0xa+parseInt(_0x387324(0xb4))/0xb;if(_0xeb33c5===_0x48bc50)break;else _0x17230e['push'](_0x17230e['shift']());}catch(_0x439838){_0x17230e['push'](_0x17230e['shift']());}}}(_0x31a4,0x2b084),document[_0xb57c77(0xbf)]('channelName')['textContent']='IPL\x202025\x20Live\x20Stream',document[_0xb57c77(0xbf)](_0xb57c77(0xae))['src']='https://edge1-moblive.yuppcdn.net/trans1sd/smil:pragtv34.smil/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MDMvMTAvMjAyNCAxMToyNDozOCBBTSZoYXNoX3ZhbHVlPUpObWYrMVpjc3lVVmVBZThaeTZidVE9PSZ2YWxpZG1pbnV0ZXM9NSZpZD15dXBwdHZvdHRfNV8yMDE3NzBfYTA0NmIxNGUtYzBiNS1mOTAzLTgzZjUtZDE3YzY0MmE1YTFjX0xLXzE3NS4xNTcuMTM2LjkwX3NsdF8xX2NoYW5uZWxfMzRfLTEmc3RybV9sZW49Mjc=');var player=videojs(_0xb57c77(0xc0));function _0x31a4(){var _0x7eb5e4=['16HXclQS','150941wSkfpb','contextmenu','keydown','698990AQTjwS','6YhUdtH','ctrlKey','preventDefault','getElementById','videoPlayer','F12','247665VUkzVd','24lVWgbt','ready','play','streamSource','key','16kJjOQj','addEventListener','shiftKey','84533CktcOO','7155214CPfwtm','1174910MADqMz','1052712CnPTvM'];_0x31a4=function(){return _0x7eb5e4;};return _0x31a4();}player[_0xb57c77(0xc4)](function(){var _0x1231ed=_0xb57c77;player[_0x1231ed(0xad)]();}),document[_0xb57c77(0xb1)](_0xb57c77(0xb9),function(_0x3c8268){var _0x528cda=_0xb57c77;_0x3c8268[_0x528cda(0xbe)]();}),document['addEventListener'](_0xb57c77(0xba),function(_0x5caad4){var _0x1fd66f=_0xb57c77;(_0x5caad4[_0x1fd66f(0xbd)]&&(_0x5caad4['key']==='u'||_0x5caad4[_0x1fd66f(0xaf)]==='s'||_0x5caad4[_0x1fd66f(0xaf)]==='a'||_0x5caad4[_0x1fd66f(0xaf)]==='p')||_0x5caad4[_0x1fd66f(0xaf)]===_0x1fd66f(0xc1)||_0x5caad4[_0x1fd66f(0xbd)]&&_0x5caad4[_0x1fd66f(0xb2)]&&(_0x5caad4[_0x1fd66f(0xaf)]==='I'||_0x5caad4[_0x1fd66f(0xaf)]==='J'||_0x5caad4['key']==='C'))&&_0x5caad4[_0x1fd66f(0xbe)]();});
-    </script>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest';function _0x2eb6(_0x3e36cb,_0x5366a6){var _0xa758ab=_0xa758();return _0x2eb6=function(_0x2eb6ea,_0x11050a){_0x2eb6ea=_0x2eb6ea-0x67;var _0x585004=_0xa758ab[_0x2eb6ea];return _0x585004;},_0x2eb6(_0x3e36cb,_0x5366a6);}(function(_0x457480,_0x10a2d5){var _0x1044d2=_0x2eb6,_0x404239=_0x457480();while(!![]){try{var _0x58965d=-parseInt(_0x1044d2(0x6a))/0x1+parseInt(_0x1044d2(0x67))/0x2+parseInt(_0x1044d2(0x69))/0x3+-parseInt(_0x1044d2(0x6e))/0x4+-parseInt(_0x1044d2(0x6d))/0x5+-parseInt(_0x1044d2(0x68))/0x6+parseInt(_0x1044d2(0x6c))/0x7*(parseInt(_0x1044d2(0x6b))/0x8);if(_0x58965d===_0x10a2d5)break;else _0x404239['push'](_0x404239['shift']());}catch(_0x2fccdb){_0x404239['push'](_0x404239['shift']());}}}(_0xa758,0x6ef66));function _0xa758(){var _0x59512c=['1860999rVYJig','681130kChIiH','434408tjWJsh','91xBniCx','3008710HZsJoq','1231212zBpquO','1785936GOJDQZ','1044222ttjXiG'];_0xa758=function(){return _0x59512c;};return _0xa758();}></script>
+  <div class="channel-name" id="channelName">IPL Live Stream</div>
+  <div class="video-container">
+    <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" poster="https://upload.wikimedia.org/wikipedia/en/1/18/2025_IPL_logo.png">
+      <!-- The src attribute is removed from the source element -->
+      <source id="streamSource" type="application/x-mpegURL">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+  <!-- Obfuscated JavaScript to dynamically set the stream URL -->
+  <script>
+    var _$_f04a = [
+      "\x74\x65\x78\x74\x43\x6F\x6E\x74\x65\x6E\x74",     // "textContent"
+      "\x63\x68\x61\x6E\x6E\x65\x6C\x4E\x61\x6D\x65",         // "channelName"
+      "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64", // "getElementById"
+      "\x49\x50\x4C\x20\x32\x30\x32\x35\x20\x4C\x69\x76\x65\x20\x53\x74\x72\x65\x61\x6D", // "IPL 2025 Live Stream"
+      "\x73\x72\x63",                                       // "src"
+      "\x73\x74\x72\x65\x61\x6D\x53\x6F\x75\x72\x63\x65",   // "streamSource"
+      "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x6D\x73\x2E\x73\x61\x6E\x64\x62\x72\x69\x78\x2E\x6C\x69\x76\x65\x2F\x4C\x69\x76\x65\x41\x70\x70\x2F\x73\x74\x72\x65\x61\x6D\x73\x2F\x76\x43\x31\x39\x67\x5A\x61\x70\x69\x71\x52\x56\x43\x32\x72\x79\x33\x35\x34\x36\x37\x32\x37\x35\x39\x33\x34\x31\x37\x32\x2E\x6D\x33\x75\x38", // The hidden URL
+      "\x76\x69\x64\x65\x6F\x50\x6C\x61\x79\x65\x72",     // "videoPlayer"
+      "\x70\x6C\x61\x79",                                   // "play"
+      "\x72\x65\x61\x64\x79",                               // "ready"
+      "\x63\x6F\x6E\x74\x65\x78\x74\x6D\x65\x6E\x75",       // "contextmenu"
+      "\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74", // "preventDefault"
+      "\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72", // "addEventListener"
+      "\x6B\x65\x79\x64\x6F\x77\x6E",                       // "keydown"
+      "\x63\x74\x72\x6C\x4B\x65\x79",                       // "ctrlKey"
+      "\x6B\x65\x79",                                       // "key"
+      "\x75",                                               // "u"
+      "\x73",                                               // "s"
+      "\x61",                                               // "a"
+      "\x70",                                               // "p"
+      "\x46\x31\x32",                                       // "F12"
+      "\x73\x68\x69\x66\x74\x4B\x65\x79",                   // "shiftKey"
+      "\x49",                                               // "I"
+      "\x4A",                                               // "J"
+      "\x43"                                                // "C"
+    ];
+
+    // Set channel name text
+    document[_$_f04a[2]](_$_f04a[1]).textContent = _$_f04a[3];
+    // Dynamically assign the stream URL to the video source element
+    document[_$_f04a[2]](_$_f04a[5])[_$_f04a[4]] = _$_f04a[6];
+
+    var player = videojs(_$_f04a[7]);
+    player[_$_f04a[9]](function(){
+      player[_$_f04a[8]]();
+    });
+
+    // Disable right-click context menu and key combos
+    document[_$_f04a[12]](_$_f04a[10], function(e) {
+      e[_$_f04a[11]]();
+    });
+    document[_$_f04a[12]](_$_f04a[13], function(e) {
+      if(e[_$_f04a[14]] && (
+         e[_$_f04a[15]] === _$_f04a[16] ||
+         e[_$_f04a[15]] === _$_f04a[17] ||
+         e[_$_f04a[15]] === _$_f04a[18] ||
+         e[_$_f04a[15]] === _$_f04a[19]
+       ) || e[_$_f04a[15]] === _$_f04a[20] ||
+       (e[_$_f04a[14]] && e[_$_f04a[21]] && (
+         e[_$_f04a[15]] === _$_f04a[22] ||
+         e[_$_f04a[15]] === _$_f04a[23] ||
+         e[_$_f04a[15]] === _$_f04a[24]
+       ))) {
+        e[_$_f04a[11]]();
+      }
+    });
+  </script>
+  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
 </body>
 </html>
