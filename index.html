@@ -45,17 +45,17 @@
     </style>
 </head>
 <body>
-    <div class="channel-name" id="channelName">Live Stream</div>
+    <div class="channel-name" id="channelName">🔴 Live Stream</div>
     <div class="video-container">
         <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" poster="https://upload.wikimedia.org/wikipedia/en/1/18/2025_IPL_logo.png">
-            <source id="streamSource" src="https://ams.sandbrix.live/LiveApp/streams/vC19gZapiqRVC2ry35467275934172.m3u8" type="application/x-mpegURL">
+            <source id="streamSource" src="https://edge1-moblive.yuppcdn.net/trans1sd/smil:pragtv34.smil/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MDMvMTAvMjAyNCAxMToyNDozOCBBTSZoYXNoX3ZhbHVlPUpObWYrMVpjc3lVVmVBZThaeTZidVE9PSZ2YWxpZG1pbnV0ZXM9NSZpZD15dXBwdHZvdHRfNV8yMDE3NzBfYTA0NmIxNGUtYzBiNS1mOTAzLTgzZjUtZDE3YzY0MmE1YTFjX0xLXzE3NS4xNTcuMTM2LjkwX3NsdF8xX2NoYW5uZWxfMzRfLTEmc3RybV9sZW49Mjc=" type="application/x-mpegURL">
             Your browser does not support the video tag.
         </video>
     </div>
     <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
     <script>
         // Set the channel name and stream URL
-        document.getElementById('channelName').textContent = "Live Stream";
+        document.getElementById('channelName').textContent = "IPL 2025 Live Stream";
         document.getElementById('streamSource').src = "https://edge1-moblive.yuppcdn.net/trans1sd/smil:pragtv34.smil/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MDMvMTAvMjAyNCAxMToyNDozOCBBTSZoYXNoX3ZhbHVlPUpObWYrMVpjc3lVVmVBZThaeTZidVE9PSZ2YWxpZG1pbnV0ZXM9NSZpZD15dXBwdHZvdHRfNV8yMDE3NzBfYTA0NmIxNGUtYzBiNS1mOTAzLTgzZjUtZDE3YzY0MmE1YTFjX0xLXzE3NS4xNTcuMTM2LjkwX3NsdF8xX2NoYW5uZWxfMzRfLTEmc3RybV9sZW49Mjc=";
 
         // Initialize the video player
@@ -78,5 +78,6 @@
             }
         });
     </script>
+<script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
 </body>
 </html>
