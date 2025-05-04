@@ -29,7 +29,7 @@ window.addEventListener('load', function() {
   let isLive = false;
 
   // Example HLS stream URL (replace with your actual stream URL)
-  const hlsUrl = 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8';
+  const hlsUrl = 'https://ams.sandbrix.live/LiveApp/streams/vC19gZapiqRVC2ry35467275934172.m3u8';
 
   if (Hls.isSupported()) {
     const hls = new Hls();
