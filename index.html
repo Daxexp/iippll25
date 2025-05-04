@@ -1,83 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Stream</title>
-    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #ffffff;
-            transition: background-color 0.5s ease, color 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .channel-name {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .video-container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        #videoPlayer {
-            width: 100%;
-            height: 60vh; /* Adjust height to be responsive */
-        }
-        /* When in fullscreen, set video to cover the whole screen */
-        #videoPlayer:-webkit-full-screen,
-        #videoPlayer:-moz-full-screen,
-        #videoPlayer:fullscreen {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Live Stream</title>
+  <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #121212;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .channel-name {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .video-container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+    #videoPlayer {
+      width: 100%;
+      height: 60vh;
+    }
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .controls label {
+      font-size: 1rem;
+      margin-right: 5px;
+    }
+    .controls select,
+    .controls button {
+      padding: 8px 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: #fff;
+      transition: background-color 0.3s ease;
+    }
+    .controls button:hover,
+    .controls select:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-    <div class="channel-name" id="channelName">🔴 Live Stream</div>
-    <div class="video-container">
-        <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" poster="https://upload.wikimedia.org/wikipedia/en/1/18/2025_IPL_logo.png">
-            <source id="streamSource" src="https://edge1-moblive.yuppcdn.net/trans1sd/smil:pragtv34.smil/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MDMvMTAvMjAyNCAxMToyNDozOCBBTSZoYXNoX3ZhbHVlPUpObWYrMVpjc3lVVmVBZThaeTZidVE9PSZ2YWxpZG1pbnV0ZXM9NSZpZD15dXBwdHZvdHRfNV8yMDE3NzBfYTA0NmIxNGUtYzBiNS1mOTAzLTgzZjUtZDE3YzY0MmE1YTFjX0xLXzE3NS4xNTcuMTM2LjkwX3NsdF8xX2NoYW5uZWxfMzRfLTEmc3RybV9sZW49Mjc=" type="application/x-mpegURL">
-            Your browser does not support the video tag.
-        </video>
+  <div class="channel-name" id="channelName">Live Stream</div>
+  <div class="video-container">
+    <video
+      id="videoPlayer"
+      class="video-js vjs-default-skin"
+      controls
+      preload="auto"
+      poster="https://upload.wikimedia.org/wikipedia/en/1/18/2025_IPL_logo.png"
+    >
+      <source
+        id="streamSource"
+        src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+        type="application/x-mpegURL"
+      />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="controls">
+    <div class="playback-speed">
+      <label for="speedSelect">Playback Speed:</label>
+      <select id="speedSelect">
+        <option value="0.5">0.5x</option>
+        <option value="0.75">0.75x</option>
+        <option value="1" selected>1x</option>
+        <option value="1.25">1.25x</option>
+        <option value="1.5">1.5x</option>
+        <option value="2">2x</option>
+      </select>
     </div>
-    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
-    <script>
-        // Set the channel name and stream URL
-        document.getElementById('channelName').textContent = "IPL 2025 Live Stream";
-        document.getElementById('streamSource').src = "https://edge1-moblive.yuppcdn.net/trans1sd/smil:pragtv34.smil/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MDMvMTAvMjAyNCAxMToyNDozOCBBTSZoYXNoX3ZhbHVlPUpObWYrMVpjc3lVVmVBZThaeTZidVE9PSZ2YWxpZG1pbnV0ZXM9NSZpZD15dXBwdHZvdHRfNV8yMDE3NzBfYTA0NmIxNGUtYzBiNS1mOTAzLTgzZjUtZDE3YzY0MmE1YTFjX0xLXzE3NS4xNTcuMTM2LjkwX3NsdF8xX2NoYW5uZWxfMzRfLTEmc3RybV9sZW49Mjc=";
+    <button id="pipButton">Picture-in-Picture</button>
+  </div>
 
-        // Initialize the video player
-        var player = videojs('videoPlayer');
-        player.ready(function() {
-            player.play(); // Start playback when player is ready
-        });
+  <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+  <script>
+    // Set channel name and stream URL
+    document.getElementById("channelName").textContent = "Live Stream";
+    document.getElementById("streamSource").src =
+      "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
 
-        // Disable right-click
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+    // Initialize Video.js player
+    var player = videojs("videoPlayer");
+    player.ready(function() {
+      player.play();
+    });
 
-        // Disable certain key combinations
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'a' || e.key === 'p') || 
-                e.key === 'F12' || 
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C'))) {
-                e.preventDefault();
-            }
-        });
-    </script>
-<script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
+    // Playback speed control
+    const speedSelect = document.getElementById("speedSelect");
+    speedSelect.addEventListener("change", function () {
+      let selectedSpeed = parseFloat(this.value);
+      player.playbackRate(selectedSpeed);
+    });
+
+    // Picture-In-Picture toggle
+    const pipButton = document.getElementById("pipButton");
+    pipButton.addEventListener("click", async function () {
+      // Check if Picture-in-Picture is supported
+      if (document.pictureInPictureEnabled) {
+        // If the video is not in PiP, request it
+        if (!document.pictureInPictureElement) {
+          try {
+            await player.tech_.el_.requestPictureInPicture();
+          } catch (error) {
+            console.error("Error enabling Picture-in-Picture.", error);
+          }
+        } else {
+          // Exit Picture-in-Picture
+          try {
+            await document.exitPictureInPicture();
+          } catch (error) {
+            console.error("Error exiting Picture-in-Picture.", error);
+          }
+        }
+      } else {
+        alert("Picture-in-Picture is not supported by your browser.");
+      }
+    });
+
+    // Disable right-click context menu
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
+
+    // Disable specific key combinations
+    document.addEventListener("keydown", function (e) {
+      if (
+        (e.ctrlKey && (e.key === "u" || e.key === "s" || e.key === "a" || e.key === "p")) ||
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C"))
+      ) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
