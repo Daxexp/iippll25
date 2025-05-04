@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Stream</title>
-    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TV Channels</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,55 +12,48 @@
             background-color: #121212;
             color: #ffffff;
             transition: background-color 0.5s ease, color 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            user-select: none; /* Disable text selection */
         }
-        .channel-name {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .video-container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        #videoPlayer {
+
+        .container {
             width: 100%;
-            height: 60vh; /* Adjust height to be responsive */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 60px; /* Add padding to avoid content being hidden behind the bar */
         }
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: rgba(220, 53, 69, 0.7); /* Transparent red */
-            color: white;
-            padding: 5px 10px; /* Smaller padding */
-            font-size: 0.9rem; /* Smaller font size */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+
+        .bar {
+            width: 100%;
+            background-color: #ffffff;
+            color: #121212;
+            border-bottom: 2px solid #ff0000;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
-        .back-button:hover {
-            background-color: rgba(200, 35, 51, 0.7);
-        }
+
         .theme-toggle {
             position: absolute;
-            top: 20px;
+            top: 50%;
             right: 20px;
+            transform: translateY(-50%);
             display: flex;
             align-items: center;
             cursor: pointer;
         }
+
         .theme-toggle input {
             display: none;
         }
+
         .switch {
             display: inline-block;
             width: 60px;
@@ -71,6 +63,7 @@
             position: relative;
             transition: background-color 0.3s;
         }
+
         .switch::before {
             content: '';
             position: absolute;
@@ -82,101 +75,253 @@
             border-radius: 50%;
             transition: transform 0.3s;
         }
+
         input:checked + .switch {
             background-color: #4CAF50;
         }
+
         input:checked + .switch::before {
             transform: translateX(26px);
         }
+
         .emoji {
             margin-left: 10px;
             font-size: 24px;
         }
+
+        .channels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .channel {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .channel:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .channel img {
+            width: 100%;
+            height: auto;
+        }
+
+        .channel h2 {
+            margin: 10px 0;
+        }
+
+        .channel .play-button {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 0, 0, 0.7);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            line-height: 50px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.5s, transform 0.5s, box-shadow 0.5s;
+            opacity: 0;
+        }
+
+        .channel:hover .play-button {
+            display: block;
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            opacity: 1;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .player-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ffffff;
+            color: #121212;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        .player {
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            background-color: #000;
+        }
+
         /* Light mode styles */
         .light-mode {
             background-color: #f0f0f0 !important;
             color: #333 !important;
         }
-        .light-mode .back-button {
-            background-color: rgba(0, 0, 0, 0.7);
+
+        .light-mode .container {
+            background-color: transparent;
+        }
+
+        .light-mode .bar {
+            background-color: #000000;
             color: #ffffff;
         }
-        .light-mode .back-button:hover {
-            background-color: rgba(255, 0, 0, 0.7);
-            color: #ffffff;
+
+        .light-mode .channel {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        .light-mode .channel:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .light-mode .footer {
+            color: #666;
+        }
+
         .light-mode .theme-toggle .switch {
             background-color: #ccc;
         }
+
         .light-mode .theme-toggle input:checked + .switch {
             background-color: #4CAF50;
         }
+
         .light-mode .theme-toggle input:checked + .switch::before {
             background-color: #ffffff;
+        }
+
+        .light-mode .player-section {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .light-mode .back-button {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .light-mode .back-button:hover {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .channel {
+                width: 45%;
+            }
+
+            .player {
+                width: 95%;
+                height: auto;
+            }
+
+            .back-button {
+                width: 80px;
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .channel {
+                width: 100px; /* Smaller tiles for mobile view */
+            }
+
+            .channel h2 {
+                font-size: 14px; /* Smaller font size for channel names */
+            }
+
+            .channel .play-button {
+                width: 30px; /* Smaller play button for mobile view */
+                height: 30px;
+                font-size: 16px;
+                line-height: 30px;
+            }
+
+            .player {
+                width: 100%;
+                height: auto;
+            }
+
+            .back-button {
+                width: 60px;
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .bar {
+                font-size: 1.2rem;
+            }
+
+            .switch {
+                width: 40px; /* Smaller switch for mobile view */
+                height: 20px;
+            }
+
+            .switch::before {
+                width: 18px;
+                height: 18px;
+            }
+
+            .emoji {
+                font-size: 18px; /* Smaller emoji for mobile view */
+                margin-left: 5px; /* Adjust margin for better alignment */
+            }
         }
     </style>
 </head>
 <body>
-    <div class="channel-name" id="channelName"></div>
-    <div class="video-container">
-        <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto">
-            <source id="streamSource" type="application/x-mpegURL">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <button class="back-button" onclick="window.location.href='index.html'">
-        Go Back
-    </button>
-
-    <div class="theme-toggle">
-        <input type="checkbox" id="theme-switch" onchange="toggleTheme()" />
-        <label class="switch" for="theme-switch"></label>
-        <span class="emoji">🌙</span>
-    </div>
-
-    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const emoji = document.querySelector('.theme-toggle .emoji');
-            const isLightMode = document.getElementById('theme-switch').checked;
-            if (isLightMode) {
-                body.classList.add('light-mode');
-                emoji.textContent = '☀️';
-            } else {
-                body.classList.remove('light-mode');
-                emoji.textContent = '🌙';
-            }
-        }
-
-        // Get channel name and stream URL from the URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const channelName = urlParams.get('channel');
-        const streamURL = urlParams.get('stream');
-
-        // Set the channel name and stream URL
-        document.getElementById('channelName').textContent = channelName;
-        document.getElementById('streamSource').src = streamURL;
-
-        // Initialize the video player
-        var player = videojs('videoPlayer');
-        player.ready(function() {
-            player.play(); // Start playback when player is ready
-        });
-
-        // Disable right-click
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // Disable certain key combinations
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'a' || e.key === 'p') || 
-                e.key === 'F12' || 
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C'))) {
-                e.preventDefault();
-            }
-        });
-    </script>
+    <!-- The content will be dynamically generated by the JavaScript file -->
+    <script src="tv.js"></script>
 </body>
 </html>
