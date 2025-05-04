@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HLS Web Player</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="player-container resize-fit">
+    <video id="video" controls></video>
+    <div id="liveBadge" class="live-badge hidden">LIVE</div>
+  </div>
+  
+  <div class="controls">
+    <label for="volume">Volume:</label>
+    <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+    
+    <label for="resize">Resize Mode:</label>
+    <select id="resize">
+      <option value="fit">Fit</option>
+      <option value="fill">Fill</option>
+      <option value="original">Original</option>
+      <option value="6-9">6:9</option>
+    </select>
+  </div>
+  
+  <!-- hls.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="script.js"></script>
+</body>
+</html>
